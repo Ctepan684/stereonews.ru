@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StereoNews | 6xvial присоединяется к Viperr Music</title>
+    <style>
+        :root {
+            --primary: #121212;
+            --secondary: #1a1a1a;
+            --accent: #ff3e4d;
+            --text: #ffffff;
+            --text-secondary: #b3b3b3;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .breaking-news {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        header {
+            background-color: var(--secondary);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .article-header {
+            margin-bottom: 30px;
+        }
+        
+        .article-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .article-title {
+            font-size: 2.5rem;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .member-card {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-name {
+            font-size: 1.3rem;
+            margin: 0 0 5px 0;
+        }
+        
+        .member-role {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .quote {
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        
+        .social-share {
+            display: flex;
+            margin: 40px 0;
+        }
+        
+        .social-share a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-share a:hover {
+            background-color: var(--accent);
+        }
+        
+        .related-news {
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
+        }
+        
+        .related-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .news-card {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .news-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .news-card-content {
+            padding: 15px;
+        }
+        
+        .news-card-title {
+            font-size: 1.1rem;
+            margin: 0 0 10px 0;
+        }
+        
+        .news-card-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+            }
+            
+            .nav-links a {
+                margin: 0 10px;
+            }
+            
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .article-image {
+                height: 350px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="breaking-news">
+        BREAKING: 6xvial официально присоединяется к Viperr Music!
+    </div>
+    
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">STERE<span>O</span>NEWS</a>
+            <div class="nav-links">
+                <a href="#">Главная</a>
+                <a href="#">Новости</a>
+                <a href="#">Музыка</a>
+                <a href="#">О нас</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="article-header">
+            <div class="article-date">1 АВГУСТА 2023</div>
+            <h1 class="article-title">6xvial официально становится частью Viperr Music</h1>
+            <div class="article-subtitle">Степан Степанов под псевдонимом 6xvial присоединяется к музыкальному коллективу основателей Kai Angel и 9mice</div>
+        </div>
+        
+        <img src="group_photo.jpg" alt="6xvial, Kai Angel и 9mice" class="article-image">
+        
+        <div class="article-content">
+            <p>Сегодня музыкальная индустрия потрясена важным событием - официальным присоединением нового участника к известному коллективу Viperr Music. Под псевдонимом 6xvial скрывается талантливый Степан Степанов, чье вступление в группу уже называют одним из самых значимых событий года.</p>
+            
+            <p>Основатели коллектива Kai Angel и 9mice лично представили нового участника на закрытой пресс-конференции в Москве. "Мы долго искали того, кто сможет дополнить наше звучание и привнести что-то действительно новое. В 6xvial мы нашли не просто коллегу, а родственную душу", - заявил 9mice.</p>
+            
+            <div class="quote">
+                "Это новый этап для Viperr Music. С 6xvial мы сможем выйти на совершенно другой уровень творчества. Его видение музыки идеально сочетается с нашей философией", - Kai Angel
+            </div>
+            
+            <p>6xvial (Степан Степанов) уже известен в узких кругах как автор нескольких экспериментальных проектов на стыке электронной музыки и индастриала. Его сотрудничество с Viperr Music началось еще несколько месяцев назад, когда он участвовал в создании нескольких треков для нового альбома группы.</p>
+            
+            <p>По словам инсайдеров, официальное вступление 6xvial в коллектив было лишь вопросом времени. "Мы сразу поняли, что хотим работать с ним на постоянной основе. Его подход к созданию музыки - это именно то, что нам было нужно", - признался 9mice в эксклюзивном комментарии для StereoNews.</p>
+            
+            <h2>Новый состав Viperr Music</h2>
+            
+            <div class="members-grid">
+                <div class="member-card">
+                    <img src="6xvial.jpg" alt="6xvial" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">6xvial</h3>
+                        <p class="member-role">Новый участник</p>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <img src="kai_angel.jpg" alt="Kai Angel" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Kai Angel</h3>
+                        <p class="member-role">Основатель</p>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <img src="9mice.jpg" alt="9mice" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">9mice</h3>
+                        <p class="member-role">Основатель</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p>Первым совместным проектом обновленного состава Viperr Music станет мини-альбом "Triad", выход которого запланирован на конец сентября. По предварительной информации, релиз будет включать 6 треков, в создании которых участвовали все три участника коллектива.</p>
+            
+            <p>6xvial в своем первом официальном заявлении в качестве участника группы отметил: "Для меня большая честь работать вместе с Kai Angel и 9mice. Мы разделяем общее видение музыки как искусства, которое должно не просто развлекать, но и заставлять думать. Вместе мы сможем реализовать проекты, о которых раньше можно было только мечтать".</p>
+            
+            <div class="social-share">
+                <span style="margin-right: 15px; color: var(--text-secondary);">Поделиться:</span>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        
+        <div class="related-news">
+            <h2 class="related-title">Последние новости о Viperr Music</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <img src="news1.jpg" alt="Новость 1" class="news-card-image">
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">Kai Angel анонсирует сольный тур</h3>
+                        <div class="news-card-date">28 ИЮЛЯ 2023</div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <img src="news2.jpg" alt="Новость 2" class="news-card-image">
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">9mice выпускает клип с неожиданным камео</h3>
+                        <div class="news-card-date">22 ИЮЛЯ 2023</div>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <img src="news3.jpg" alt="Новость 3" class="news-card-image">
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">Viperr Music подписывают контракт с крупным лейблом</h3>
+                        <div class="news-card-date">15 ИЮЛЯ 2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">STERE<span>O</span>NEWS</div>
+            
+            <div class="footer-links">
+                <h3>Новости</h3>
+                <a href="#">Музыка</a>
+                <a href="#">Исполнители</a>
+                <a href="#">Релизы</a>
+                <a href="#">Турне</a>
+            </div>
+            
+            <div class="footer-links">
+                <h3>О нас</h3>
+                <a href="#">Команда</a>
+                <a href="#">Контакты</a>
+                <a href="#">Реклама</a>
+                <a href="#">Вакансии</a>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Подписаться</h3>
+                <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="#"><i class="fab fa-vk"></i> ВКонтакте</a>
+                <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="#"><i class="fab fa-spotify"></i> Spotify</a>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2023 StereoNews. Все права защищены. При использовании материалов ссылка обязательна.
+        </div>
+    </footer>
+</body>
+</html>
