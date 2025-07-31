@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StereoNews | Viperr Music</title>
+    <style>
+        :root {
+            --viperr-red: #ff3e4d;
+            --viperr-dark: #121212;
+            --viperr-light: #f8f9fa;
+            --viperr-accent: #6a11cb;
+            --stereo-pink: #ff2d75;
+            --stereo-blue: #1fd2ff;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--viperr-dark);
+            color: white;
+            line-height: 1.7;
+        }
+        
+        @keyframes neon-glow {
+            0% { text-shadow: 0 0 5px var(--stereo-blue), 0 0 10px var(--stereo-blue); }
+            50% { text-shadow: 0 0 10px var(--stereo-pink), 0 0 20px var(--stereo-pink); }
+            100% { text-shadow: 0 0 5px var(--stereo-blue), 0 0 10px var(--stereo-blue); }
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--viperr-dark), #1a1a2e);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--stereo-pink), var(--stereo-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: neon-glow 3s infinite;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            color: #aaa;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .invitation-card {
+            background: linear-gradient(135deg, rgba(26,26,46,0.8), rgba(42,13,56,0.8));
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid rgba(106,17,203,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(106,17,203,0.1) 0%, rgba(106,17,203,0) 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+        
+        .invitation-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .viperr-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--stereo-pink);
+            margin-right: 20px;
+        }
+        
+        .invitation-title {
+            font-size: 1.8rem;
+            margin: 0;
+            background: linear-gradient(to right, var(--stereo-pink), var(--stereo-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .invitation-text {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            line-height: 1.8;
+            position: relative;
+        }
+        
+        .signatures {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .signature {
+            text-align: center;
+            margin: 15px;
+        }
+        
+        .member-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--viperr-accent);
+            margin-bottom: 10px;
+        }
+        
+        .member-name {
+            font-weight: 600;
+            color: var(--stereo-blue);
+        }
+        
+        .member-role {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .news-card {
+            background: rgba(30,30,46,0.6);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-title {
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--stereo-pink);
+            margin-bottom: 15px;
+        }
+        
+        .news-excerpt {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(to right, var(--stereo-pink), var(--stereo-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,45,117,0.4);
+        }
+        
+        footer {
+            background: #0a0a14;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+            border-top: 1px solid rgba(106,17,203,0.3);
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: #aaa;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--stereo-blue);
+        }
+        
+        .copyright {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .invitation-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .viperr-logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .signatures {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">STEREO<span style="color: var(--stereo-blue)">NEWS</span></div>
+            <div class="tagline">ОФИЦИАЛЬНЫЕ НОВОСТИ VIPERR MUSIC</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="invitation-card">
+            <div class="invitation-header">
+                <img src="viperr_logo.jpg" alt="Viperr Music" class="viperr-logo">
+                <h1 class="invitation-title">ОФИЦИАЛЬНОЕ ПРИГЛАШЕНИЕ</h1>
+            </div>
+            
+            <div class="invitation-text">
+                <p>Дорогой <strong>Степан Степанов</strong>,</p>
+                <p>Команда Viperr Music в лице основателей 9mice и Kai Angel рада официально пригласить тебя присоединиться к нашему коллективу в качестве участника и креативного продюсера.</p>
+                <p>Мы высоко ценим твой творческий потенциал, уникальное видение музыки и преданность искусству. Твой стиль и подход идеально сочетаются с философией Viperr Music.</p>
+                <p>Присоединяйся к нам в этом музыкальном путешествии, где мы вместе будем создавать инновационные проекты и покорять новые вершины!</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="#" class="btn">ПРИНЯТЬ ПРИГЛАШЕНИЕ</a>
+            </div>
+            
+            <div class="signatures">
+                <div class="signature">
+                    <img src="9mice.jpg" alt="9mice" class="member-photo">
+                    <div class="member-name">9MICE</div>
+                    <div class="member-role">Основатель Viperr Music</div>
+                </div>
+                
+                <div class="signature">
+                    <img src="kai_angel.jpg" alt="Kai Angel" class="member-photo">
+                    <div class="member-name">KAI ANGEL</div>
+                    <div class="member-role">Основатель Viperr Music</div>
+                </div>
+                
+                <div class="signature">
+                    <img src="stepan.jpg" alt="Степан Степанов" class="member-photo">
+                    <div class="member-name">СТЕПАН СТЕПАНОВ</div>
+                    <div class="member-role">Новый участник</div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 style="text-align: center; margin-bottom: 30px; font-size: 1.8rem;">ПОСЛЕДНИЕ НОВОСТИ VIPERR</h2>
+        
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="news1.jpg" alt="Новость 1" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">25 ИЮЛЯ 2023</div>
+                    <h3 class="news-title">Viperr Music запускает новый лейбл</h3>
+                    <p class="news-excerpt">Компания объявила о создании нового подразделения, которое займется продвижением молодых талантов...</p>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Подробнее</a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <img src="news2.jpg" alt="Новость 2" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">18 ИЮЛЯ 2023</div>
+                    <h3 class="news-title">9mice выпускает сольный альбом</h3>
+                    <p class="news-excerpt">После двух лет работы основатель Viperr Music представляет свой первый полноформатный альбом...</p>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Подробнее</a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <img src="news3.jpg" alt="Новость 3" class="news-image">
+                <div class="news-content">
+                    <div class="news-date">10 ИЮЛЯ 2023</div>
+                    <h3 class="news-title">Kai Angel о новых коллаборациях</h3>
+                    <p class="news-excerpt">В эксклюзивном интервью Kai Angel рассказал о предстоящих совместных работах с известными артистами...</p>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="logo" style="font-size: 2rem;">STEREO<span style="color: var(--stereo-blue)">NEWS</span></div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-spotify"></i></a>
+            </div>
+            <div class="copyright">
+                © 2023 Viperr Music. Все права защищены.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
